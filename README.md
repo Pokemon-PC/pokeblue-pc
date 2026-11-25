@@ -1,31 +1,71 @@
-# Pokémon Red and Blue [![Build Status][ci-badge]][ci]
+# Pokémon Rouge — version PC native / native PC port
 
-This is a disassembly of Pokémon Red and Blue.
+**Projet de fans, non affilié à Nintendo, Game Freak, The Pokémon Company ni
+à [pret](https://pret.github.io/).** C'est un fork du dépôt
+[pret/pokered](https://github.com/pret/pokered) (désassemblage du jeu), dont
+l'outillage d'origine leur appartient. pret n'accepte pas le code généré par
+IA et ne veut pas y être associé : n'envoyez rien d'ici à pret et ne les
+sollicitez pas à son sujet. Le port PC (dossier `pc/`) a été réalisé avec des
+agents IA.
 
-It builds the following ROMs:
+**Bleu** : [Pokemon-PC/pokeblue-pc](https://github.com/Pokemon-PC/pokeblue-pc). Les deux
+versions partagent le même code ; `python pc/build.py` construit `pokered` et `pokeblue`.
 
-- Pokemon Red (UE) [S][!].gb `sha1: ea9bcae617fdf159b045185467ae58b2e4a48b9a`
-- Pokemon Blue (UE) [S][!].gb `sha1: d7037c83e1ae5b39bde3c30787637ba1d4c48ce2`
-- BLUEMONS.GB (debug build) `sha1: 5b1456177671b79b263c614ea0e7cc9ac542e9c4`
-- dmgapae0.e69.patch `sha1: 0fb5f743696adfe1dbb2e062111f08f9bc5a293a`
-- dmgapee0.e68.patch `sha1: ed4be94dc29c64271942c87f2157bca9ca1019c7`
+(English below)
 
-To set up the repository, see [**INSTALL.md**](INSTALL.md).
+## Français
 
+Pokémon Rouge qui tourne **nativement sur PC** (Windows, Linux), **sans
+émulateur**. Le code du jeu (assembleur Game Boy) est **traduit en C** par
+recompilation statique, puis compilé ; le matériel Game Boy est reproduit
+(écran ligne par ligne, son 4 canaux, manette, sauvegarde).
 
-## See also
+- **Votre ROM est nécessaire** ; l'exécutable ne contient aucune donnée du jeu.
+  ROM reconnues :
+  - Pokemon - Red Version (USA, Europe)
+  - Pokemon - Version Rouge (France)
+- **Langue** : anglais et français dans le même exécutable, choisis d'après la
+  ROM : `--lang en|fr`, ou dans `pokered.ini` à côté du programme :
+  ```
+  lang=fr
+  rom_en=C:\...\Pokemon - Red Version (USA, Europe).gb
+  rom_fr=C:\...\Pokemon - Version Rouge (France).gb
+  ```
+  Autres réglages : `fullscreen=1`, `scale=4`, `palette=gbc|green|gray` (couleurs de la Game Boy Color par défaut, ou vert/gris de la Game Boy d'origine), `save=...`.
+- **Commandes** : flèches, X/Espace = A, Z/Ctrl = B, Entrée = Start,
+  Retour arrière = Select, Tab = avance rapide, F11 = plein écran ; manette
+  reconnue automatiquement.
+- **Sauvegarde** : `pokemon_red.sav` / `pokemon_rouge.sav` à côté du programme, au format des émulateurs
+  (`.sav`) : une sauvegarde d'émulateur peut être reprise.
 
-- [**Wiki**][wiki] (includes [tutorials][tutorials])
-- [**Symbols**][symbols]
-- [**Tools**][tools]
+### Compiler
 
-You can find us on [Discord (pret, #pokered)](https://discord.gg/d5dubZ3).
+Il faut rgbds 1.0.x et `make` (pour reconstruire la ROM anglaise et ses
+symboles, comme le dépôt d'origine), Python 3, CMake, Ninja, Clang et SDL2.
+```
+python pc/build.py --rom-fr "<ROM française>"
+```
+Le C généré n'est pas dans le dépôt : il est produit à la compilation. Les
+détails (méthode, outils de test, journal) sont dans
+[`pc/PORTING_ROADMAP.md`](pc/PORTING_ROADMAP.md).
 
-For other pret projects, see [pret.github.io](https://pret.github.io/).
+## English
 
-[wiki]: https://github.com/pret/pokered/wiki
-[tutorials]: https://github.com/pret/pokered/wiki/Tutorials
-[symbols]: https://github.com/pret/pokered/tree/symbols
-[tools]: https://github.com/pret/gb-asm-tools
-[ci]: https://github.com/pret/pokered/actions
-[ci-badge]: https://github.com/pret/pokered/actions/workflows/main.yml/badge.svg
+Pokémon Red running **natively on PC** (Windows, Linux) **without an
+emulator**: the game's Game Boy assembly is **statically recompiled to C**
+and the Game Boy hardware is reproduced (scanline renderer, 4-channel sound,
+gamepad, save files).
+
+- **Your own ROM is required**; the executable holds no game data.
+  Supported ROMs:
+  - Pokemon - Red Version (USA, Europe)
+  - Pokemon - Version Rouge (France)
+- **Language**: English and French in one executable, picked from the ROM
+  (`--lang en|fr`, or `lang=`, `rom_en=`, `rom_fr=` in `pokered.ini`).
+- **Build**: `python pc/build.py --rom-fr "<French ROM>"` (rgbds 1.0.x, make,
+  Python 3, CMake, Ninja, Clang, SDL2). The generated C is not in the
+  repository; it is produced at build time.
+- Saves: `pokemon_red.sav` / `pokemon_rouge.sav`, emulator-compatible `.sav` files.
+
+The original disassembly README is at
+[pret/pokered](https://github.com/pret/pokered#readme).

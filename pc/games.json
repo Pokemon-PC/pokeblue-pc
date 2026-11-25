@@ -1,0 +1,8 @@
+[
+  {"exe": "pokered",
+   "en": {"make": "red", "rom": "pokered.gbc", "sym": "pokered.sym", "name": "red", "prefix": "red"},
+   "fr": {"title": "POKEMON RED", "name": "rouge", "roots": ["pc/roots_red_fr.txt", "pc/roots_red_fr_runtime.txt"]}},
+  {"exe": "pokeblue",
+   "en": {"make": "blue", "rom": "pokeblue.gbc", "sym": "pokeblue.sym", "name": "blue", "prefix": "blue"},
+   "fr": {"title": "POKEMON BLUE", "name": "bleue", "roots": ["pc/roots_blue_fr.txt", "pc/roots_blue_fr_runtime.txt"]}}
+]
