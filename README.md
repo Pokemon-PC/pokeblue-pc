@@ -1,4 +1,4 @@
-# Pokémon Rouge — version PC native / native PC port
+# Pokémon Bleu — version PC native / native PC port
 
 **Projet de fans, non affilié à Nintendo, Game Freak, The Pokémon Company ni
 à [pret](https://pret.github.io/).** C'est un fork du dépôt
@@ -8,34 +8,34 @@ IA et ne veut pas y être associé : n'envoyez rien d'ici à pret et ne les
 sollicitez pas à son sujet. Le port PC (dossier `pc/`) a été réalisé avec des
 agents IA.
 
-**Bleu** : [Pokemon-PC/pokeblue-pc](https://github.com/Pokemon-PC/pokeblue-pc). Les deux
-versions partagent le même code ; `python pc/build.py` construit `pokered` et `pokeblue`.
+**Rouge** : [Pokemon-PC/pokered-pc](https://github.com/Pokemon-PC/pokered-pc). Les deux
+versions partagent le même code ; ce dépôt suit celui de Rouge (`python pc/build.py --exe pokeblue`).
 
 (English below)
 
 ## Français
 
-Pokémon Rouge qui tourne **nativement sur PC** (Windows, Linux), **sans
+Pokémon Bleu qui tourne **nativement sur PC** (Windows, Linux), **sans
 émulateur**. Le code du jeu (assembleur Game Boy) est **traduit en C** par
 recompilation statique, puis compilé ; le matériel Game Boy est reproduit
 (écran ligne par ligne, son 4 canaux, manette, sauvegarde).
 
 - **Votre ROM est nécessaire** ; l'exécutable ne contient aucune donnée du jeu.
   ROM reconnues :
-  - Pokemon - Red Version (USA, Europe)
-  - Pokemon - Version Rouge (France)
+  - Pokemon - Blue Version (USA, Europe)
+  - Pokemon - Version Bleue (France)
 - **Langue** : anglais et français dans le même exécutable, choisis d'après la
-  ROM : `--lang en|fr`, ou dans `pokered.ini` à côté du programme :
+  ROM : `--lang en|fr`, ou dans `pokeblue.ini` à côté du programme :
   ```
   lang=fr
-  rom_en=C:\...\Pokemon - Red Version (USA, Europe).gb
-  rom_fr=C:\...\Pokemon - Version Rouge (France).gb
+  rom_en=C:\...\Pokemon - Blue Version (USA, Europe).gb
+  rom_fr=C:\...\Pokemon - Version Bleue (France).gb
   ```
   Autres réglages : `fullscreen=1`, `scale=4`, `palette=gbc|green|gray` (couleurs de la Game Boy Color par défaut, ou vert/gris de la Game Boy d'origine), `save=...`.
 - **Commandes** : flèches, X/Espace = A, Z/Ctrl = B, Entrée = Start,
   Retour arrière = Select, Tab = avance rapide, F11 = plein écran ; manette
   reconnue automatiquement.
-- **Sauvegarde** : `pokemon_red.sav` / `pokemon_rouge.sav` à côté du programme, au format des émulateurs
+- **Sauvegarde** : `pokemon_blue.sav` / `pokemon_bleue.sav` à côté du programme, au format des émulateurs
   (`.sav`) : une sauvegarde d'émulateur peut être reprise.
 
 ### Compiler
@@ -51,21 +51,21 @@ détails (méthode, outils de test, journal) sont dans
 
 ## English
 
-Pokémon Red running **natively on PC** (Windows, Linux) **without an
+Pokémon Blue running **natively on PC** (Windows, Linux) **without an
 emulator**: the game's Game Boy assembly is **statically recompiled to C**
 and the Game Boy hardware is reproduced (scanline renderer, 4-channel sound,
 gamepad, save files).
 
 - **Your own ROM is required**; the executable holds no game data.
   Supported ROMs:
-  - Pokemon - Red Version (USA, Europe)
-  - Pokemon - Version Rouge (France)
+  - Pokemon - Blue Version (USA, Europe)
+  - Pokemon - Version Bleue (France)
 - **Language**: English and French in one executable, picked from the ROM
-  (`--lang en|fr`, or `lang=`, `rom_en=`, `rom_fr=` in `pokered.ini`).
+  (`--lang en|fr`, or `lang=`, `rom_en=`, `rom_fr=` in `pokeblue.ini`).
 - **Build**: `python pc/build.py --rom-fr "<French ROM>"` (rgbds 1.0.x, make,
   Python 3, CMake, Ninja, Clang, SDL2). The generated C is not in the
   repository; it is produced at build time.
-- Saves: `pokemon_red.sav` / `pokemon_rouge.sav`, emulator-compatible `.sav` files.
+- Saves: `pokemon_blue.sav` / `pokemon_bleue.sav`, emulator-compatible `.sav` files.
 
 The original disassembly README is at
 [pret/pokered](https://github.com/pret/pokered#readme).
