@@ -47,3 +47,11 @@ build/pc_red/pokered.exe "<ROM Rouge>.gb"
 
 - 2026-11-25 : parcours scripté de Rouge jusqu'à la sauvegarde/rechargement ; Bleu jusqu'à la chambre ; 0 instruction interprétée.
 - 2026-11-25 : versions françaises (ROM du joueur, MBC5) ajoutées aux deux exécutables.
+- 2026-11-25 (suite) : les ROM de l'utilisateur sont toutes dans un seul dossier
+  (`D:/LUC/pokemonall/roms`, à plat). Le jeu les trouve seul : chemin explicite
+  (argument, `rom_en=`/`rom_fr=`), sinon dossier du programme, sinon `rom_dir`
+  du `.ini` (`--rom-dir`, `GB_ROM_DIR`) ; le fichier est choisi à son contenu
+  (CRC de la ROM entière = version + langue), jamais à son nom. Testé : 10 cas
+  EN/FR trouvés depuis `rom_dir` seul. Paquets Windows (.zip) et Linux
+  (.tar.gz, glibc >= 2.34 grâce à `pc/cmake/glibc_compat.h` et
+  `-DGB_PORTABLE_GLIBC=ON`) faits avec `pc/tools/package.py`.
